@@ -89,27 +89,34 @@ Put this hook call inside the component body and declare container and isActive 
 Animations created later in an event handler are outside the original hook callback. Wrap the handler with contextSafe so those animations join the same context and are cleaned up.
 
 ~~~jsx
-const container = useRef(null);
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
-const { contextSafe } = useGSAP({ scope: container });
+gsap.registerPlugin(useGSAP);
 
-const rotateCard = contextSafe(() => {
-  gsap.to(".active-card", {
-    rotation: 8,
-    duration: 0.2,
-    yoyo: true,
-    repeat: 1,
+export function AnimationActions() {
+  const container = useRef(null);
+  const { contextSafe } = useGSAP({ scope: container });
+
+  const rotateCard = contextSafe(() => {
+    gsap.to(".active-card", {
+      rotation: 8,
+      duration: 0.2,
+      yoyo: true,
+      repeat: 1,
+    });
   });
-});
 
-return (
-  <section ref={container}>
-    <button type="button" onClick={rotateCard}>
-      Rotate card
-    </button>
-    <div className="active-card">Card content</div>
-  </section>
-);
+  return (
+    <section ref={container}>
+      <button type="button" onClick={rotateCard}>
+        Rotate card
+      </button>
+      <div className="active-card">Card content</div>
+    </section>
+  );
+}
 ~~~
 
 This is a component fragment showing the hook and returned JSX. In a full component, keep hooks at the top level and return one component tree. The button remains a native keyboard-operable control.
