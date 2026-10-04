@@ -63,16 +63,13 @@ export function DetailsPanel() {
   useGSAP(
     () => {
       gsap.to(".details", {
-        height: open ? "auto" : 0,
-        opacity: open ? 1 : 0,
+        autoAlpha: open ? 1 : 0,
+        y: open ? 0 : 8,
         duration: 0.25,
+        overwrite: "auto",
       });
     },
-    {
-      scope: container,
-      dependencies: [open],
-      revertOnUpdate: true,
-    }
+    { scope: container, dependencies: [open] }
   );
 
   return (
@@ -84,15 +81,22 @@ export function DetailsPanel() {
       >
         {open ? "Hide details" : "Show details"}
       </button>
-      <div className="details" aria-hidden={!open}>
+      <p className="details" aria-hidden={!open}>
         Extra information controlled by React state
-      </div>
+      </p>
     </section>
   );
 }
 ~~~
 
-For a production disclosure, verify that hidden content cannot receive focus and that its accessibility state matches its visibility. A native details and summary element may be a simpler choice when custom animation is not needed.
+~~~css
+.details {
+  visibility: hidden;
+  opacity: 0;
+}
+~~~
+
+This example contains plain text. If a disclosure contains links or other focusable controls, make sure closing it moves focus safely and prevents hidden controls from receiving focus. A native details and summary element may be simpler when custom animation is unnecessary.
 
 ## Avoid creating a new tween on every render
 
