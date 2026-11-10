@@ -422,7 +422,7 @@
 
 ### Question 2: Why register useGSAP with GSAP?
 
-**Answer:** Registration helps bundlers keep the hook and avoids loading conflicting copies of the integration.
+**Answer:** Registration lets GSAP recognize the integration and helps bundlers preserve it. The official React guide also recommends registration to avoid React version discrepancies.
 
 ### Question 3: What does the scope ref limit?
 

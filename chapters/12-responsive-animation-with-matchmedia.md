@@ -16,25 +16,26 @@ const media = gsap.matchMedia();
 media.add(
   {
     wide: "(min-width: 800px)",
+    narrow: "(max-width: 799px)",
     reduceMotion: "(prefers-reduced-motion: reduce)",
   },
   (context) => {
-    const { wide, reduceMotion } = context.conditions;
+    const { wide, narrow, reduceMotion } = context.conditions;
 
     if (reduceMotion) {
       return;
     }
 
     gsap.from(".hero-art", {
-      x: wide ? 80 : 20,
+      x: wide ? 80 : narrow ? 20 : 0,
       opacity: 0,
-      duration: wide ? 0.5 : 0.25,
+      duration: wide ? 0.5 : narrow ? 0.25 : 0,
     });
   }
 );
 ~~~
 
-The callback receives a context with the matched named conditions. This example skips the entrance movement when reduced motion is preferred and uses a shorter, smaller entrance on narrow screens.
+The callback receives a context with the matched named conditions. A conditions object runs its callback when at least one condition matches, so include both wide and narrow breakpoints to cover regular viewport widths. This example skips the entrance movement when reduced motion is preferred and uses a shorter, smaller entrance on narrow screens.
 
 ## Build separate desktop and mobile behavior
 

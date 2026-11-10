@@ -23,7 +23,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 ~~~
 
-Registering the hook helps bundlers preserve it and avoids loading multiple copies of the integration.
+Registering the hook lets GSAP recognize the integration and helps bundlers preserve it. The official React guide also recommends registration to avoid React version discrepancies.
 
 ## Scope an animation to a component
 

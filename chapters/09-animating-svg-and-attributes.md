@@ -43,7 +43,7 @@ CSS properties and SVG attributes are different. A property such as opacity can 
 
 ## Draw a path with DrawSVGPlugin
 
-DrawSVGPlugin animates which portion of an SVG stroke is visible. In current GSAP releases it can be imported from the package and registered like other plugins.
+DrawSVGPlugin animates which portion of an SVG stroke is visible. With GSAP 3.13 or later, it can be installed from the public npm package and imported like other plugins.
 
 ~~~js
 import { gsap } from "gsap";

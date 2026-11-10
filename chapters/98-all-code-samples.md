@@ -670,19 +670,20 @@ const media = gsap.matchMedia();
 media.add(
   {
     wide: "(min-width: 800px)",
+    narrow: "(max-width: 799px)",
     reduceMotion: "(prefers-reduced-motion: reduce)",
   },
   (context) => {
-    const { wide, reduceMotion } = context.conditions;
+    const { wide, narrow, reduceMotion } = context.conditions;
 
     if (reduceMotion) {
       return;
     }
 
     gsap.from(".hero-art", {
-      x: wide ? 80 : 20,
+      x: wide ? 80 : narrow ? 20 : 0,
       opacity: 0,
-      duration: wide ? 0.5 : 0.25,
+      duration: wide ? 0.5 : narrow ? 0.25 : 0,
     });
   }
 );
@@ -968,9 +969,22 @@ function cleanup() {
 ### Sample 2
 
 ~~~js
-image.addEventListener("load", () => {
-  ScrollTrigger.refresh();
-});
+function refreshAfterImageLoad(image) {
+  const refresh = () => ScrollTrigger.refresh();
+
+  if (image.complete) {
+    refresh();
+    return () => {};
+  }
+
+  image.addEventListener("load", refresh, { once: true });
+  image.addEventListener("error", refresh, { once: true });
+
+  return () => {
+    image.removeEventListener("load", refresh);
+    image.removeEventListener("error", refresh);
+  };
+}
 ~~~
 
 | Previous | Notes index | Next |

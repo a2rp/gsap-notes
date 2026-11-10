@@ -41,12 +41,25 @@ Keep the listener scoped to the feature that needs it. Remove listeners when tha
 ScrollTrigger measures start and end positions from document layout. If application code adds content, loads images, or changes a region's size after setup, refresh measurements when the layout is ready.
 
 ~~~js
-image.addEventListener("load", () => {
-  ScrollTrigger.refresh();
-});
+function refreshAfterImageLoad(image) {
+  const refresh = () => ScrollTrigger.refresh();
+
+  if (image.complete) {
+    refresh();
+    return () => {};
+  }
+
+  image.addEventListener("load", refresh, { once: true });
+  image.addEventListener("error", refresh, { once: true });
+
+  return () => {
+    image.removeEventListener("load", refresh);
+    image.removeEventListener("error", refresh);
+  };
+}
 ~~~
 
-Avoid refreshing on every scroll frame. Refresh after a meaningful layout change, and remove event listeners when the component or page is discarded.
+If the image already finished loading from cache, the helper refreshes immediately. Otherwise, it refreshes on load or error and returns a cleanup function for the component or page teardown. Avoid refreshing on every scroll frame; refresh after a meaningful layout change.
 
 ## Inspect real performance
 
