@@ -28,7 +28,7 @@ GSAP can target a selector, an element, or a collection of elements. Start with 
 
 ~~~html
 <button type="button" data-play>Play animation</button>
-<div class="box" aria-label="Orange animation box"></div>
+<div class="box"></div>
 ~~~
 
 ~~~css

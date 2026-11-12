@@ -58,7 +58,7 @@ gsap.from(".replay-card", {
 });
 ~~~
 
-This example plays on entry and reverses when the user scrolls back past the starting boundary. Use once: true when the animation should run only on its first entry instead.
+This example plays on entry and reverses when the user scrolls back past the starting boundary. Use once: true when the animation should play once as the trigger moves forward. ScrollTrigger removes itself after the end position is reached, so it will not replay when the user scrolls back.
 
 ## Debug trigger positions
 

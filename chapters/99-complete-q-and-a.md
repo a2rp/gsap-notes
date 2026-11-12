@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | [Previous: All code samples](./98-all-code-samples.md) | [Notes index](../README.md) | End of notes |
 
-## 01. [01. GSAP setup and first tween](./01-gsap-setup-and-first-tween.md)
+## 01. [GSAP setup and first tween](./01-gsap-setup-and-first-tween.md)
 
 ### Question 1: Which package does the installation example add?
 
@@ -40,7 +40,7 @@
 
 **Answer:** A semantic button works with keyboard input, and a visible starting box keeps the content available before motion runs.
 
-## 02. [02. Targets, methods, and animation values](./02-targets-methods-and-animation-values.md)
+## 02. [Targets, methods, and animation values](./02-targets-methods-and-animation-values.md)
 
 ### Question 1: Which target types can GSAP animate?
 
@@ -52,11 +52,11 @@
 
 ### Question 3: How does gsap.to choose its starting values?
 
-**Answer:** gsap.to reads the target current rendered values and animates toward the values in the vars object.
+**Answer:** gsap.to reads the target's current rendered values and animates toward the values in the vars object.
 
 ### Question 4: What does gsap.from animate toward?
 
-**Answer:** gsap.from starts at the values in its vars object and animates back to the targets current rendered values.
+**Answer:** gsap.from starts at the values in its vars object and animates back to the target's current rendered values.
 
 ### Question 5: When is gsap.fromTo useful?
 
@@ -74,7 +74,7 @@
 
 **Answer:** onUpdate can run many times per second, so heavy work can slow the interface.
 
-## 03. [03. Tween timing, repeats, and callbacks](./03-tween-timing-repeats-and-callbacks.md)
+## 03. [Tween timing, repeats, and callbacks](./03-tween-timing-repeats-and-callbacks.md)
 
 ### Question 1: Which unit does duration use?
 
@@ -108,7 +108,7 @@
 
 **Answer:** repeatRefresh invalidates and recalculates function-based values for each repeat.
 
-## 04. [04. Eases and motion feel](./04-eases-and-motion-feel.md)
+## 04. [Eases and motion feel](./04-eases-and-motion-feel.md)
 
 ### Question 1: What does an ease control?
 
@@ -142,7 +142,7 @@
 
 **Answer:** Duration is the total time in seconds; ease defines how speed changes during that time.
 
-## 05. [05. Timelines, positions, and labels](./05-timelines-positions-and-labels.md)
+## 05. [Timelines, positions, and labels](./05-timelines-positions-and-labels.md)
 
 ### Question 1: What does a GSAP timeline coordinate?
 
@@ -176,7 +176,7 @@
 
 **Answer:** Set that property directly on the child tween; its explicit value overrides the shared default.
 
-## 06. [06. Stagger and function-based values](./06-stagger-and-function-based-values.md)
+## 06. [Stagger and function-based values](./06-stagger-and-function-based-values.md)
 
 ### Question 1: What does stagger change for a group of targets?
 
@@ -210,7 +210,7 @@
 
 **Answer:** Predictable values make an animation easier to understand and produce consistent results on repeated runs.
 
-## 07. [07. Controlling tweens and timelines](./07-controlling-tweens-and-timelines.md)
+## 07. [Controlling tweens and timelines](./07-controlling-tweens-and-timelines.md)
 
 ### Question 1: What does gsap.to return?
 
@@ -244,7 +244,7 @@
 
 **Answer:** kill stops and removes the animation but may leave its current inline styles; revert also restores the pre-animation styles.
 
-## 08. [08. Animating CSS and transforms](./08-animating-css-and-transforms.md)
+## 08. [Animating CSS and transforms](./08-animating-css-and-transforms.md)
 
 ### Question 1: Which types of CSS properties can GSAP animate?
 
@@ -278,7 +278,7 @@
 
 **Answer:** Changing height affects layout and can move surrounding content; a transform moves the element visually without changing document flow.
 
-## 09. [09. Animating SVG and attributes](./09-animating-svg-and-attributes.md)
+## 09. [Animating SVG and attributes](./09-animating-svg-and-attributes.md)
 
 ### Question 1: How can GSAP select an inline SVG element?
 
@@ -312,7 +312,7 @@
 
 **Answer:** Add one when the desired effect needs that feature; use core GSAP when it already handles the task.
 
-## 10. [10. ScrollTrigger foundations](./10-scrolltrigger-foundations.md)
+## 10. [ScrollTrigger foundations](./10-scrolltrigger-foundations.md)
 
 ### Question 1: Which package module exports ScrollTrigger?
 
@@ -336,7 +336,7 @@
 
 ### Question 6: What does once: true do?
 
-**Answer:** It runs the trigger once on entry and then disables that one-time trigger.
+**Answer:** It plays the animation once as the trigger moves forward, then kills the ScrollTrigger after it reaches its end position so the animation will not replay on a reverse scroll.
 
 ### Question 7: Why use markers during development?
 
@@ -346,11 +346,11 @@
 
 **Answer:** Users may not scroll or animation code may fail, so essential information must already be present in the page.
 
-## 11. [11. ScrollTrigger scrub, pin, and snap](./11-scrolltrigger-scrub-pin-and-snap.md)
+## 11. [ScrollTrigger scrub, pin, and snap](./11-scrolltrigger-scrub-pin-and-snap.md)
 
 ### Question 1: What does scrub connect?
 
-**Answer:** scrub connects the animation playhead to the users scroll position.
+**Answer:** scrub connects the animation playhead to the user's scroll position.
 
 ### Question 2: How does scrub: 0.5 differ from scrub: true?
 
@@ -380,7 +380,7 @@
 
 **Answer:** Test touch, wheel, trackpad, and keyboard scrolling because snapping changes where scrolling settles.
 
-## 12. [12. Responsive animation with matchMedia](./12-responsive-animation-with-matchmedia.md)
+## 12. [Responsive animation with matchMedia](./12-responsive-animation-with-matchmedia.md)
 
 ### Question 1: What does gsap.matchMedia observe?
 
@@ -392,7 +392,7 @@
 
 ### Question 3: When are GSAP animations created in a matchMedia callback reverted?
 
-**Answer:** GSAP animations and ScrollTriggers created in that callback are reverted when its query stops matching.
+**Answer:** GSAP animations and ScrollTriggers created in that callback are reverted when its media setup changes, such as when its query stops matching or a named condition changes.
 
 ### Question 4: How can reduced motion affect the animation setup?
 
@@ -414,7 +414,7 @@
 
 **Answer:** A breakpoint can change layout dimensions and element positions used for trigger measurements.
 
-## 13. [13. GSAP in React with useGSAP](./13-gsap-in-react-with-usegsap.md)
+## 13. [GSAP in React with useGSAP](./13-gsap-in-react-with-usegsap.md)
 
 ### Question 1: Which package adds the GSAP React integration?
 
@@ -448,7 +448,7 @@
 
 **Answer:** React should render content, own application state, and decide whether components exist; GSAP handles visual timing.
 
-## 14. [14. Event-driven animation in React](./14-event-driven-animation-in-react.md)
+## 14. [Event-driven animation in React](./14-event-driven-animation-in-react.md)
 
 ### Question 1: Why use React event props for button actions?
 
@@ -482,7 +482,7 @@
 
 **Answer:** Keyboard and touch users may not hover, so important behavior needs another reachable input.
 
-## 15. [15. Accessibility and reduced motion](./15-accessibility-and-reduced-motion.md)
+## 15. [Accessibility and reduced motion](./15-accessibility-and-reduced-motion.md)
 
 ### Question 1: Which media feature represents the reduced-motion preference?
 
@@ -516,7 +516,7 @@
 
 **Answer:** Test reduced-motion settings, keyboard navigation, zoom, touch input, and narrow layouts.
 
-## 16. [16. Performance, testing, and release checks](./16-performance-testing-and-release-checks.md)
+## 16. [Performance, testing, and release checks](./16-performance-testing-and-release-checks.md)
 
 ### Question 1: Why are transforms and opacity often preferred for frequent animation?
 
@@ -549,7 +549,3 @@
 ### Question 8: Which items belong in a final release check?
 
 **Answer:** Check reduced motion, keyboard focus, control behavior, layout stability, listener cleanup, plugin registration, and the production build.
-
-| Previous | Notes index | Next |
-| --- | --- | --- |
-| [Previous: All code samples](./98-all-code-samples.md) | [Notes index](../README.md) | End of notes |

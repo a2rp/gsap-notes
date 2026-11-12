@@ -8,7 +8,7 @@
 
 ## Match animations to media conditions
 
-gsap.matchMedia lets an animation setup run while media queries match. Animations and ScrollTriggers created inside the callback are reverted when the conditions stop matching.
+gsap.matchMedia lets an animation setup run while media queries match. Animations and ScrollTriggers created inside the callback are reverted when its media setup changes. If a named condition changes while another condition still matches, GSAP reruns the callback with the updated condition values.
 
 ~~~js
 const media = gsap.matchMedia();
@@ -37,9 +37,9 @@ media.add(
 
 The callback receives a context with the matched named conditions. A conditions object runs its callback when at least one condition matches, so include both wide and narrow breakpoints to cover regular viewport widths. This example skips the entrance movement when reduced motion is preferred and uses a shorter, smaller entrance on narrow screens.
 
-## Build separate desktop and mobile behavior
+## Use an animation only where it fits
 
-Not every animation needs a scaled-down version on a smaller screen. A layout change may need a different target or no animation at all.
+Not every animation needs a scaled-down version on a smaller screen. If the motion only fits a wide layout, set it up for that media query and let CSS handle the narrow layout. GSAP reverts the setup when its query stops matching.
 
 ~~~js
 const responsive = gsap.matchMedia();
@@ -51,13 +51,9 @@ responsive.add("(min-width: 900px)", () => {
     duration: 0.4,
   });
 });
-
-responsive.add("(max-width: 899px)", () => {
-  gsap.set(".desktop-decoration", { clearProps: "all" });
-});
 ~~~
 
-Each callback is tied to its media query. When a query stops matching, GSAP reverts the animations created in that callback. Keep any extra DOM listeners or non-GSAP resources under their own cleanup logic.
+When the viewport is narrower than 900 pixels, no animation setup runs and the stylesheet controls the decoration. Keep any extra DOM listeners or non-GSAP resources under their own cleanup logic.
 
 ## Revert media setup when finished
 

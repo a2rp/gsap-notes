@@ -24,7 +24,7 @@ import { gsap } from "gsap";
 
 ~~~html
 <button type="button" data-play>Play animation</button>
-<div class="box" aria-label="Orange animation box"></div>
+<div class="box"></div>
 ~~~
 
 ### Sample 4
@@ -700,10 +700,6 @@ responsive.add("(min-width: 900px)", () => {
     rotation: 8,
     duration: 0.4,
   });
-});
-
-responsive.add("(max-width: 899px)", () => {
-  gsap.set(".desktop-decoration", { clearProps: "all" });
 });
 ~~~
 
